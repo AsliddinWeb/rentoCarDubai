@@ -27,7 +27,14 @@ admin.site.site_header = "Admin name"
 admin.site.index_title = "Dashboard"
 
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
+
+    # Home
+    path('', include('home_app.urls')),
+
+    # News
+    path('news/', include('news_app.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

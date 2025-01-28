@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>News | Auto Zoom Car Rental L L C Dubai, Sports Car & Supercar Rental Dubai</title>
+{% endblock title %}
+
+{% block custom_css %}
+<link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+{% endblock custom_css %}
+
+{% block content %}
+<!-- Header Banner -->
+    <section class="banner-header section-padding bg-img" data-overlay-dark="5" data-background="{% static 'img/slider/1.jpg' %}">
+        <div class="v-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h6>Blog & News</h6>
+                        <h1>Latest News</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- divider line -->
+    <div class="line-vr-section"></div>
+    <!-- Blog -->
+    <section class="blog1 section-padding">
+        <div class="container">
+            <div class="row">
+                {% for new in news %}
+                  <div class="col-lg-4 col-md-6 mb-45">
+                      <div class="item">
+                          <div class="img"> <img src="{{ new.image.url }}" alt=""> </div>
+                          <div class="wrapper">
+                              <div class="date"> <a href="{% url 'news_detail_page' pk=new.id %}">{{ new.created_at }}</a> </div>
+                              <div class="con">
+                                  <div class="category"> <a href="{% url 'news_category_page' pk=new.category.id %}"><i class="ti-comment"></i>{{ new.category }}</a> </div>
+                                  <div class="text"> <a href="{% url 'news_detail_page' pk=new.id %}">{{ new.title|truncatewords:5 }}</a> </div> <a href="{% url 'news_detail_page' pk=new.id %}" class="icon-btn"><i class="ti-arrow-top-right"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                {% endfor %}
+            </div>
+            <!-- Pagination -->
+<div class="row">
+    <div class="col-md-12 text-center">
+        <ul class="pagination-wrap">
+            {% if news.has_previous %}
+                <li><a href="?page=1"><i class="ti-angle-left"></i></a></li>
+                <li><a href="?page={{ news.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            {% for i in news.paginator.page_range %}
+                {% if news.number == i %}
+                    <li><a href="?page={{ i }}" class="active">{{ i }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if news.has_next %}
+                <li><a href="?page={{ news.next_page_number }}">Next</a></li>
+                <li><a href="?page={{ news.paginator.num_pages }}"><i class="ti-angle-right"></i></a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </section>
+{% endblock content %}
+
+{% block custom_js %}
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/select2.js' %}"></script>
+    <script src="{% static 'js/datepicker.js' %}"></script>
+    <script src="{% static 'js/YouTubePopUp.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+{% endblock custom_js %}

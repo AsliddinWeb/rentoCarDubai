@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>All Cars | Auto Zoom Car Rental L L C Dubai, Sports Car & Supercar Rental Dubai</title>
+{% endblock title %}
+
+{% block custom_css %}
+<link rel="shortcut icon" href="{% static 'img/favicon.png' %}"/>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+{% endblock custom_css %}
+
+{% block content %}
+<!-- Header Banner -->
+    <section class="banner-header section-padding bg-img" data-overlay-dark="5" data-background="{% static 'img/slider/11.jpg' %}">
+        <div class="v-middle">
+            <div class="container">
+                <div class="col-md-12 text-center">
+                    <h6>Rent Now</h6>
+                    <h1><span>Select</span> Luxury Car</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Cars 4 -->
+    <section class="cars4 section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-4 col-md-12 mb-30">
+                    <div class="sidebar-list">
+                        <div class="search">
+                            <form method="get">
+                                <input type="text" name="search" placeholder="Search ..." value="{{ request.GET.search }}">
+
+                                <button type="submit"><i class="ti-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="item">
+                            <form method="get">
+                                <h5>Select Brand</h5>
+                                <div class="filter-radio-group">
+                                    {% for car_brand in car_brands %}
+                                        <div class="form-group">
+                                            <input type="radio" id="car_brand_{{ car_brand.id }}" name="car_brand" value="{{ car_brand.id }}" {% if request.GET.car_brand == car_brand.id|stringformat:"s" %}checked{% endif %}>
+                                            <label for="car_brand_{{ car_brand.id }}">{{ car_brand.title }}</label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <h5>Car Type</h5>
+                                <div class="filter-radio-group">
+                                    {% for car_type in car_types %}
+                                        <div class="form-group">
+                                            <input type="radio" id="car_type_{{ car_type.id }}" name="car_type" value="{{ car_type.id }}" {% if request.GET.car_type == car_type.id|stringformat:"s" %}checked{% endif %}>
+                                            <label for="car_type_{{ car_type.id }}">{{ car_type.title }}</label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <h5>Transmission</h5>
+                                <div class="filter-radio-group">
+                                <div class="form-group">
+                                    <input type="radio" id="transmission_1" name="transmission" value="Auto" {% if request.GET.transmission == 'Auto' %}checked{% endif %}>
+                                    <label for="transmission_1">Automatic</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="radio" id="transmission_2" name="transmission" value="Manual" {% if request.GET.transmission == 'Manual' %}checked{% endif %}>
+                                    <label for="transmission_2">Manual</label>
+                                </div>
+                            </div>
+
+                                <button class="button-4" type="submit"><span class="ti-search"></span> Filter</button> |
+                                <a class="" href="/cars"> Clear Filter <span class="ti-arrow-top-right"></span></a>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="col-lg-8 col-md-12 car-list">
+                    <div class="row">
+                        {% for car in page_obj %}
+                            <div class="col-lg-6 col-md-12 mb-30">
+                              <div class="item">
+                                  <figure><img src="{{ car.main_image.url }}" alt="" class="img-fluid"></figure>
+                                  <div class="content">
+                                      <div class="cont">
+                                          <h3>{{ car.title }}</h3>
+                                          <div class="features"><span><i class="omfi-door"></i> Doors</span>
+                                              <p>{{ car.doors }}</p>
+                                          </div>
+                                          <div class="features"><span><i class="omfi-passengers"></i> Passengers</span>
+                                              <p>{{ car.passengers }}</p>
+                                          </div>
+                                          <div class="features"><span><i class="omfi-transmission"></i> Transmission</span>
+                                              <p>{{ car.transmission }}</p>
+                                          </div>
+                                          <div class="features"><span><i class="omfi-luggage"></i> Luggage</span>
+                                              <p>{{ car.luggage }}</p>
+                                          </div>
+                                          <div class="book mt-30">
+                                              <div>
+                                                  <div class="price">{{ car.one_day_price }} <span>/ day</span></div>
+                                              </div> <a href="#" class="button-4">Deatils</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <ul class="pagination-wrap">
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?page=1"><i class="ti-angle-left"></i></a></li>
+                                    <li><a href="?page={{ page_obj.previous_page_number }}">1</a></li>
+                                {% endif %}
+
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if num == page_obj.number %}
+                                        <li><a href="?page={{ num }}" class="active">{{ num }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                    <li><a href="?page={{ page_obj.next_page_number }}"><i class="ti-angle-right"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block custom_js %}
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/scrollIt.min.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'js/select2.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/YouTubePopUp.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock custom_js %}

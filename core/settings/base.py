@@ -39,6 +39,9 @@ print(ALLOWED_HOSTS)
 # Application definition
 
 INSTALLED_APPS = [
+    # Unfold admin
+    'unfold',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +52,10 @@ INSTALLED_APPS = [
     # Global APPS
 
     # Local APPS
+    'home_app',
+    'car_app',
+    'news_app',
+    'settings_app',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +73,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / '../templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +81,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # Seo processors
+                'settings_app.context_processors.book_processor',
+                'car_app.context_processors.car_processor',
             ],
         },
     },
@@ -129,10 +140,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [BASE_DIR / '../static/']
 
 # Media settings
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

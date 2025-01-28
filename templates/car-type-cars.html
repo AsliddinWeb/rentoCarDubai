@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Car Types | Auto Zoom Car Rental L L C Dubai, Sports Car & Supercar Rental Dubai</title>
+{% endblock title %}
+
+{% block custom_css %}
+<link rel="shortcut icon" href="{% static 'img/favicon.png' %}"/>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+{% endblock custom_css %}
+
+{% block content %}
+<!-- Header Banner -->
+<section class="banner-header section-padding bg-img" data-overlay-dark="5"
+         data-background="{% static 'img/slider/2.jpg' %}">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h6>Select Your Car</h6>
+                    <h1>{{ car_type.title }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- divider line -->
+<div class="line-vr-section"></div>
+
+<!-- Cars 1 -->
+    <section class="cars1 section-padding">
+        <div class="container">
+            <div class="row">
+                {% for car in page_obj %}
+                    <div class="col-lg-6 col-md-12 mb-60">
+                        <div class="item">
+                            <div class="img"> <img src="{{ car.main_image.url }}" alt=""> </div>
+                            <div class="con active">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="title"><a href="#">{{ car.title }}</a></div>
+                                        <div class="details"> <span><i class="omfi-door"></i> {{ car.doors }} Seats</span> <span><i class="omfi-transmission"></i> Auto</span> <span><i class="omfi-luggage"></i> 2 Bags</span></div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="book">
+                                            <div><a href="#" class="btn"><span>Details</span></a></div>
+                                            <div><span class="price">{{ car.one_day_price }}</span><span>/day</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="pagination-wrap">
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page=1"><i class="ti-angle-left"></i></a></li>
+                            <li><a href="?page={{ page_obj.previous_page_number }}">1</a></li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if num == page_obj.number %}
+                                <li><a href="?page={{ num }}" class="active">{{ num }}</a></li>
+                            {% else %}
+                                <li><a href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}"><i class="ti-angle-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+
+{% block custom_js %}
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/scrollIt.min.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'js/select2.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/YouTubePopUp.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock custom_js %}

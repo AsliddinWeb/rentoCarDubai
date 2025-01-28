@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Contact | Auto Zoom Car Rental L L C Dubai, Sports Car & Supercar Rental Dubai</title>
+{% endblock title %}
+
+{% block custom_css %}
+<link rel="shortcut icon" href="{% static 'img/favicon.png' %}"/>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+{% endblock custom_css %}
+
+{% block body_class %}
+bg-gray
+{% endblock %}
+
+{% block content %}
+<!-- Header Banner -->
+    <section class="banner-header middle-height section-padding bg-img" data-overlay-dark="6" data-background="{% static 'img/slider/4.jpg' %}">
+        <div class="v-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h6>Get in touch</h6>
+                        <h1>Contact <span>Us</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Box -->
+    <div class="contact-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <div class="item"> <span class="icon omfi-envelope"></span>
+                        <h5>Email us</h5>
+                        <p>{{ contact_data.email }}</p> <i class="numb omfi-envelope"></i>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <div class="item"> <span class="icon omfi-location"></span>
+                        <h5>Our address</h5>
+                        <p>{{ contact_data.address }}</p> <i class="numb omfi-location"></i>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <div class="item"> <span class="icon ti-time"></span>
+                        <h5>Opening Hours</h5>
+                        <p>{{ contact_data.opening_hours }}</p> <i class="numb ti-time"></i>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <div class="item active"> <span class="icon omfi-phone"></span>
+                        <h5>Call us</h5>
+                        <p>{{ contact_data.phone_number }}</p> <i class="numb omfi-phone"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <section class="contact section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Form -->
+                <div class="col-lg-6 col-md-12 mb-30">
+                  <div class="form-box">
+                      <h5>Get in touch</h5>
+                      <form method="post">
+                          {% csrf_token %}
+                          <!-- form message -->
+                          <div class="row">
+                              <div class="col-12">
+                                  {% if success_message %}
+                                      <div class="alert alert-success contact__msg" role="alert">
+                                          {{ success_message }}
+                                      </div>
+                                  {% endif %}
+                              </div>
+                          </div>
+                          <!-- form elements -->
+                          <div class="row">
+                              <div class="col-md-6 form-group">
+                                  <input name="name" type="text" placeholder="Your Name *" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                  <input name="email" type="email" placeholder="Your Email *" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                  <input name="phone_number" type="text" placeholder="Your Number *" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                  <input name="subject" type="text" placeholder="Subject *" required>
+                              </div>
+                              <div class="col-md-12 form-group">
+                                  <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
+                              </div>
+                              <div class="col-md-12">
+                                  <input name="submit" type="submit" value="Send Message">
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+
+
+                <!-- Map -->
+                <div class="col-lg-5 offset-lg-1 col-md-12">
+                    <h5>Location</h5>
+                    <div class="google-map">
+                        <iframe src="{{ contact_data.google_maps_iframe }}" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block custom_js %}
+<!-- jQuery -->
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/scrollIt.min.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'js/select2.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/YouTubePopUp.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+{% endblock custom_js %}
