@@ -33,7 +33,6 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
-print(ALLOWED_HOSTS)
 
 
 # Application definition
@@ -83,7 +82,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 # Seo processors
-                'settings_app.context_processors.book_processor',
+                'settings_app.context_processors.settings_processor',
                 'car_app.context_processors.car_processor',
             ],
         },
@@ -139,7 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = [BASE_DIR / '../static/']
 
 # Media settings

@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import About, PromoVideo, ClientFeedback, Booking, ContactPage, Message
+from .models import About, PromoVideo, ClientFeedback, Booking, ContactPage, Message, HomeLuxuryCars
+
 
 # Unfold admin
-from unfold.admin import ModelAdmin
+from unfold.admin import ModelAdmin, TabularInline
 
 @admin.register(About)
 class AboutAdmin(ModelAdmin):
@@ -40,3 +41,13 @@ class MessageAdmin(ModelAdmin):
     list_display = ('name', 'email', 'phone_number', 'subject', 'is_checked', 'created_at')
     search_fields = ('name', 'email', 'subject')
     list_filter = ('is_checked', 'created_at')
+
+
+class HomeLuxuryCarsInline(TabularInline):
+    model = HomeLuxuryCars.cars.through
+    extra = 1
+
+@admin.register(HomeLuxuryCars)
+class HomeLuxuryCarsAdmin(ModelAdmin):
+    list_display = ("title",)
+    filter_horizontal = ('cars', )

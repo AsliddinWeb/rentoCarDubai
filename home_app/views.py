@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
 
 
-from .models import About, PromoVideo, ClientFeedback, Booking, ContactPage, Message
+from .models import About, PromoVideo, ClientFeedback, Booking, ContactPage, Message, HomeLuxuryCars
 from car_app.models import Car, CarType, CarBrand
 from news_app.models import News
 
@@ -20,9 +20,7 @@ def home_page(request):
 
     news = News.objects.all()
 
-    car_type = get_object_or_404(CarType, pk=1)
-
-    luxury_cars = Car.objects.filter(car_type=car_type)
+    luxury_cars = HomeLuxuryCars.objects.last().cars.all()
 
     ctx = {
         'about': about,
@@ -202,3 +200,12 @@ def brand_cars_page(request, pk):
     }
 
     return render(request, 'car-type-cars.html', ctx)
+
+def car_details_page(request, pk):
+    car = get_object_or_404(Car, pk=pk)
+
+    ctx = {
+        'car': car
+    }
+
+    return render(request, 'car-details.html', ctx)

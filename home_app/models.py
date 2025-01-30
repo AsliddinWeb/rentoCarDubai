@@ -1,5 +1,7 @@
 from django.db import models
 
+from car_app.models import Car
+
 class About(models.Model):
     cap_title = models.CharField(max_length=255, verbose_name="Bosh sarlavha")
     title = models.CharField(max_length=255, verbose_name="Sarlavha")
@@ -100,3 +102,14 @@ class Message(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.subject}"
+
+class HomeLuxuryCars(models.Model):
+    title = models.CharField(max_length=255, verbose_name="Eng Top mashinalar")
+    cars = models.ManyToManyField(Car, verbose_name="Mashinalar", null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Eng Top mashina"
+        verbose_name_plural = "Eng Top mashinalar"

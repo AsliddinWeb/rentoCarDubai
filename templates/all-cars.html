@@ -110,7 +110,7 @@
                                           <div class="book mt-30">
                                               <div>
                                                   <div class="price">{{ car.one_day_price }} <span>/ day</span></div>
-                                              </div> <a href="#" class="button-4">Deatils</a>
+                                              </div> <a href="{% url 'car_details_page' pk=car.id %}" class="button-4">Deatils</a>
                                           </div>
                                       </div>
                                   </div>

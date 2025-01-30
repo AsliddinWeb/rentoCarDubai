@@ -1,6 +1,6 @@
 from .models import SeoSettings, SiteSettings, SocialNetworks
 
-def book_processor(request):
+def settings_processor(request):
     seo_settings = SeoSettings.objects.last()
     site_settings = SiteSettings.objects.last()
     social_networks = SocialNetworks.objects.all()

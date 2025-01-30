@@ -45,12 +45,12 @@
                             <div class="con active">
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <div class="title"><a href="#">{{ car.title }}</a></div>
+                                        <div class="title"><a href="{% url 'car_details_page' pk=car.id %}">{{ car.title }}</a></div>
                                         <div class="details"> <span><i class="omfi-door"></i> {{ car.doors }} Seats</span> <span><i class="omfi-transmission"></i> Auto</span> <span><i class="omfi-luggage"></i> 2 Bags</span></div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="book">
-                                            <div><a href="#" class="btn"><span>Details</span></a></div>
+                                            <div><a href="{% url 'car_details_page' pk=car.id %}" class="btn"><span>Details</span></a></div>
                                             <div><span class="price">{{ car.one_day_price }}</span><span>/day</span></div>
                                         </div>
                                     </div>
