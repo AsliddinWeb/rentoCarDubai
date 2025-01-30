@@ -20,7 +20,10 @@ def home_page(request):
 
     news = News.objects.all()
 
-    luxury_cars = HomeLuxuryCars.objects.last().cars.all()
+    luxury_cars = []
+    luxury_cars_last = HomeLuxuryCars.objects.last()
+    if luxury_cars_last:
+        luxury_cars = luxury_cars_last.cars.all()
 
     ctx = {
         'about': about,
