@@ -200,6 +200,7 @@ def brand_cars_page(request, pk):
     ctx = {
         'car_brand': car_brand,
         'page_obj': page_obj,
+        'car_type': car_brand,
     }
 
     return render(request, 'car-type-cars.html', ctx)
