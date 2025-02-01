@@ -117,7 +117,7 @@
                     <div class="owl-carousel owl-theme">
                         {% for car_brand in car_brands %}
                             <div class="clients-logo">
-                                <a href="#"><img src="{{ car_brand.image.url }}" alt=""></a>
+                                <a href="{% url 'brand_cars_page' pk=car_brand.id %}"><img src="{{ car_brand.image.url }}" alt=""></a>
                             </div>
                         {% endfor %}
                     </div>
