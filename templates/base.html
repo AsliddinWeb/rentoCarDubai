@@ -116,8 +116,8 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="owl-carousel owl-theme">
                         {% for car_brand in car_brands %}
-                            <div class="clients-logo">
-                                <a href="{% url 'brand_cars_page' pk=car_brand.id %}"><img src="{{ car_brand.image.url }}" alt=""></a>
+                            <div class="clients-logo" style="text-align: center;">
+                                <a href="{% url 'brand_cars_page' pk=car_brand.id %}"><img style="height: 81px;" src="{{ car_brand.image.url }}" alt=""></a>
                             </div>
                         {% endfor %}
                     </div>
