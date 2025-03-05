@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 # Admin custom
 admin.site.site_title = "Admin"
-admin.site.site_header = "Admin name"
+admin.site.site_header = "Autozoom"
 admin.site.index_title = "Dashboard"
 
 urlpatterns = [
