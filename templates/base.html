@@ -7,6 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
+    <!--  SEO  -->
+    <meta name="description" content="{{ seo_settings.site_description }}">
+    <meta name="keywords" content="{{ seo_settings.site_keywords }}">
+    <meta name="author" content="{{ seo_settings.site_author }}">
+    <meta name="robots" content="index, follow">
+    <meta name="og:title" content="{{ seo_settings.title }}">
+    <meta name="og:description" content="{{ seo_settings.site_description }}">
+    <meta name="og:image" content="{{ seo_settings.favicon.url }}">
+    <meta name="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="og:type" content="website">
+
+
     {% block title %}
     {% endblock title %}
 
