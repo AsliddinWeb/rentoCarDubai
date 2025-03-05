@@ -31,7 +31,7 @@ class PromoVideo(models.Model):
 
     class Meta:
         verbose_name = "Promo Video"
-        verbose_name_plural = "Promo Videolar"
+        verbose_name_plural = "Promo Video"
 
 class ClientFeedback(models.Model):
     name = models.CharField(max_length=255, verbose_name="Ism")
@@ -80,7 +80,7 @@ class ContactPage(models.Model):
 
     class Meta:
         verbose_name = "Aloqa sahifasi"
-        verbose_name_plural = "Aloqa sahifalari"
+        verbose_name_plural = "Aloqa sahifasi"
 
     def __str__(self):
         return f"Aloqa ma'lumotlari: {self.email}"
