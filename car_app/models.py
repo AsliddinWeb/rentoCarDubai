@@ -63,6 +63,8 @@ class CarBrand(models.Model):
     image = models.ImageField(upload_to='car_brands/', verbose_name="Rasm")
     link = models.CharField(max_length=255, null=True, blank=True, verbose_name="Link")
 
+    background_image = models.ImageField(null=True, blank=True, verbose_name="Orqa fon rasmi")
+
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Yaratilgan sana")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Yangilangan sana")
 

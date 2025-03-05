@@ -45,27 +45,36 @@
     <section class="cars1 section-padding">
         <div class="container">
             <div class="row">
-                {% for car in page_obj %}
-                    <div class="col-lg-6 col-md-12 mb-60">
-                        <div class="item">
-                            <div class="img"> <img src="{{ car.main_image.url }}" alt=""> </div>
-                            <div class="con active">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="title"><a href="{% url 'car_details_page' pk=car.id %}">{{ car.title }}</a></div>
-                                        <div class="details"> <span><i class="omfi-door"></i> {{ car.doors }} Seats</span> <span><i class="omfi-transmission"></i> Auto</span> <span><i class="omfi-luggage"></i> 2 Bags</span></div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="book">
-                                            <div><a href="{% url 'car_details_page' pk=car.id %}" class="btn"><span>Details</span></a></div>
-                                            <div><span class="price">{{ car.one_day_price }}</span><span>/day</span></div>
+                {% if page_obj %}
+                    {% for car in page_obj %}
+                        <div class="col-lg-6 col-md-12 mb-60">
+                            <div class="item">
+                                <div class="img"> <img src="{{ car.main_image.url }}" alt=""> </div>
+                                <div class="con active">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="title"><a href="{% url 'car_details_page' pk=car.id %}">{{ car.title }}</a></div>
+                                            <div class="details"> <span><i class="omfi-door"></i> {{ car.doors }} Seats</span> <span><i class="omfi-transmission"></i> Auto</span> <span><i class="omfi-luggage"></i> 2 Bags</span></div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="book">
+                                                <div><a href="{% url 'car_details_page' pk=car.id %}" class="btn"><span>Details</span></a></div>
+                                                <div><span class="price">{{ car.one_day_price }}</span><span>/day</span></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col mb-60">
+                        <div class="alert alert-warning">
+                            🚗✨ New cars coming soon! Stay tuned! 🚀
+                        </div>
                     </div>
-                {% endfor %}
+                {% endif %}
+
             </div>
 
             <!-- Pagination -->

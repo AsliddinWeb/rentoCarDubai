@@ -198,7 +198,7 @@ def brand_cars_page(request, pk):
     page_obj = paginator.get_page(page_number)
 
     ctx = {
-        'car_brand': car_brand,
+        'car_brand': True,
         'page_obj': page_obj,
         'car_type': car_brand,
     }
