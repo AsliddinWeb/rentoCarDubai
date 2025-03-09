@@ -7,114 +7,130 @@
 {% endblock title %}
 
 {% block custom_css %}
-<link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
-<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="shortcut icon" href="{% static 'img/favicon.png' %}"/>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 {% endblock custom_css %}
 
 {% block content %}
 <!-- Header Banner -->
-    <section class="banner-header section-padding bg-img" data-overlay-dark="4" data-background="{% static 'img/slider/3.jpg' %}">
-        <div class="v-middle">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h6>Auto Zoom</h6>
-                        <h1>About <span>Us</span></h1>
-                    </div>
+<section class="banner-header section-padding bg-img" data-overlay-dark="4"
+         data-background="{% static 'img/slider/3.jpg' %}">
+    <div class="v-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h6>Auto Zoom</h6>
+                    <h1>About <span>Us</span></h1>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- divider line -->
-    <div class="line-vr-section"></div>
+<!-- divider line -->
+<div class="line-vr-section"></div>
 
-    <!-- About -->
-    <section class="about section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 mb-30">
-                    <div class="content">
-                        <div class="section-subtitle">{{ about.cap_title }}</div>
-                        <div class="section-title">{{ about.title|safe }}</div>
-                        <p class="mb-30">{{ about.description }}</p>
-                        <ul class="list-unstyled list mb-30">
-                            <li>
-                                <div class="list-icon"> <span class="ti-check"></span> </div>
-                                <div class="list-text">
-                                    <p>{{ about.one_text }}</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="list-icon"> <span class="ti-check"></span> </div>
-                                <div class="list-text">
-                                    <p>{{ about.two_text }}</p>
-                                </div>
-                            </li>
-                        </ul> <a href="/about" class="button-4">Read More <span class="ti-arrow-top-right"></span></a>
-                    </div>
+<!-- About -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-30">
+                <div class="content">
+                    <div class="section-subtitle">{{ about.cap_title }}</div>
+                    <div class="section-title">About Us – Auto Zoom Car Rental Co. LLC</div>
+                    <p class="mb-30">
+                        At Auto Zoom Car Rental Co. LLC, we go beyond just providing cars—we create a premium driving
+                        experience. Based in the heart of Dubai, we offer a diverse fleet of vehicles, from sleek luxury
+                        cars to reliable economy options, ensuring the perfect ride for every occasion. <br><br>
+
+                        Our commitment to excellence means every car is meticulously maintained, fully serviced, and
+                        ready for the road. With flexible rental terms, transparent pricing, and exceptional customer
+                        service, we make renting a car in Dubai effortless and enjoyable. <br><br>
+
+                        Drive in style. Choose Auto Zoom Car Rental Co. LLC.
+                    </p>
+                    <ul class="list-unstyled list mb-30">
+                        <li>
+                            <div class="list-icon"><span class="ti-check"></span></div>
+                            <div class="list-text">
+                                <p>{{ about.one_text }}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-icon"><span class="ti-check"></span></div>
+                            <div class="list-text">
+                                <p>{{ about.two_text }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="/about" class="button-4">Read More <span class="ti-arrow-top-right"></span></a>
                 </div>
-                <div class="col-lg-5 offset-lg-1 col-md-12">
-                    <div class="item"> <img src="{{ about.image.url }}" class="img-fluid" alt="">
-                        <div class="curv-butn icon-bg">
-                            <a href="{{ about.video }}" class="vid">
-                                <div class="icon"> <i class="ti-control-play"></i> </div>
-                            </a>
-                            <div class="br-left-top">
-                                <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-11 h-11">
-                                    <path d="M11 1.54972e-06L0 0L2.38419e-07 11C1.65973e-07 4.92487 4.92487 1.62217e-06 11 1.54972e-06Z" fill="#ffffff"></path>
-                                </svg>
-                            </div>
-                            <div class="br-right-bottom">
-                                <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-11 h-11">
-                                    <path d="M11 1.54972e-06L0 0L2.38419e-07 11C1.65973e-07 4.92487 4.92487 1.62217e-06 11 1.54972e-06Z" fill="#ffffff"></path>
-                                </svg>
-                            </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1 col-md-12">
+                <div class="item"><img src="{{ about.image.url }}" class="img-fluid" alt="">
+                    <div class="curv-butn icon-bg">
+                        <a href="{{ about.video }}" class="vid">
+                            <div class="icon"><i class="ti-control-play"></i></div>
+                        </a>
+                        <div class="br-left-top">
+                            <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-11 h-11">
+                                <path d="M11 1.54972e-06L0 0L2.38419e-07 11C1.65973e-07 4.92487 4.92487 1.62217e-06 11 1.54972e-06Z"
+                                      fill="#ffffff"></path>
+                            </svg>
+                        </div>
+                        <div class="br-right-bottom">
+                            <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-11 h-11">
+                                <path d="M11 1.54972e-06L0 0L2.38419e-07 11C1.65973e-07 4.92487 4.92487 1.62217e-06 11 1.54972e-06Z"
+                                      fill="#ffffff"></path>
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Video -->
-    <section class="video-wrapper video section-padding bg-img bg-fixed" data-overlay-dark="4" data-background="{% static 'img/slider/1.jpg' %}">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="section-subtitle">Explore</div>
-                    <div class="section-title white">Car <span>Promo</span> Video</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="text-center col-md-12">
-                    <a class="vid" href="{{ promo_video.video }}">
-                        <div class="vid-butn"> <span class="icon"> <i class="ti-control-play"></i> </span> </div>
-                    </a>
-                </div>
+<!-- Video -->
+<section class="video-wrapper video section-padding bg-img bg-fixed" data-overlay-dark="4"
+         data-background="{% static 'img/slider/1.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-subtitle">Explore</div>
+                <div class="section-title white">Car <span>Promo</span> Video</div>
             </div>
         </div>
-    </section>
+        <div class="row">
+            <div class="text-center col-md-12">
+                <a class="vid" href="{{ promo_video.video }}">
+                    <div class="vid-butn"><span class="icon"> <i class="ti-control-play"></i> </span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}
 
 {% block custom_js %}
-    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
-    <script src="{% static 'js/jquery-migrate-3.4.1.min.js' %}"></script>
-    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
-    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
-    <script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/scrollIt.min.js' %}"></script>
-    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
-    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
-    <script src="{% static 'js/select2.js' %}"></script>
-    <script src="{% static 'js/datepicker.js' %}"></script>
-    <script src="{% static 'js/YouTubePopUp.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/scrollIt.min.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'js/select2.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/YouTubePopUp.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 {% endblock custom_js %}
