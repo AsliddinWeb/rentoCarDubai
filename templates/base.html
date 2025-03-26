@@ -132,7 +132,7 @@
                         {% for car_brand in car_brands %}
                             <div class="clients-logo" style="text-align: center;">
                                 <a href="{% url 'brand_cars_page' pk=car_brand.id %}">
-                                    <img style="width: 128px; height: 81px; object-fit: contain; image-rendering: crisp-edges;" src="{{ car_brand.image.url }}" alt="">
+                                    <img style="width: 108px; height: 81px; object-fit: contain; image-rendering: crisp-edges;" src="{{ car_brand.image.url }}" alt="">
                                 </a>
                             </div>
                         {% endfor %}
