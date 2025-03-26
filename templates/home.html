@@ -485,10 +485,10 @@
                             <div class="item">
                             <div class="img"> <img src="{{ i.image.url }}" alt=""> </div>
                                 <div class="wrapper">
-                                    <div class="date"> <a href="#">{{ i.created_at }}</a> </div>
+                                    <div class="date"> <a>{{ i.created_at }}</a> </div>
                                     <div class="con">
-                                        <div class="category"><a href="#"><i class="ti-comment"></i>{{ i.category }}</a> </div>
-                                        <div class="text"> <a href="post.html">{{ i.title|truncatewords:5 }}</a> </div> <a href="#" class="icon-btn"><i class="ti-arrow-top-right"></i></a>
+                                        <div class="category"><a href="{% url 'news_category_page' pk=i.category.id %}"><i class="ti-comment"></i>{{ i.category }}</a> </div>
+                                        <div class="text"> <a href="{% url 'news_detail_page' pk=i.id %}">{{ i.title|truncatewords:5 }}</a> </div> <a href="{% url 'news_detail_page' pk=i.id %}" class="icon-btn"><i class="ti-arrow-top-right"></i></a>
                                     </div>
                                 </div>
                             </div>
