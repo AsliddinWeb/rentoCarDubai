@@ -57,23 +57,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="/car-types" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Car Types <i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/car-types" class="dropdown-item">
-                                    <span>All Car types</span>
-                                </a>
-                            </li>
-                            {% for car_type in car_types %}
-                                <li>
-                                    <a href="{% url 'car_type_cars_page' pk=car_type.id %}" class="dropdown-item">
-                                        <span>{{ car_type.title }}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
 
-                        </ul>
-                    </li>
                     <li class="nav-item"><a class="nav-link" href="/cars">Cars</a></li>
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="/brands" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Top Brands <i class="ti-angle-down"></i></a>
                         <ul class="dropdown-menu">
@@ -218,7 +202,6 @@
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/about">About</a></li>
                                 <li><a href="/cars">Cars</a></li>
-                                <li><a href="/car-types">Car Types</a></li>
                                 <li><a href="/top-brands">Top Brands</a></li>
                                 <li><a href="/news">News</a></li>
                                 <li><a href="/contact">Contact</a></li>
