@@ -44,58 +44,52 @@
     </div>
 
     <!-- Navbar -->
-<nav class="navbar navbar-expand-lg">
-    <div class="container d-flex justify-content-between align-items-center">
-        <!-- Logo -->
-        <div class="logo-wrapper d-flex align-items-center">
-            <a class="logo" href="/">
-                <img src="{{ site_settings.header_logo.url }}" class="logo-img" alt="">
-            </a>
-        </div>
-        <!-- Phone Number (Centered only on mobile) -->
-        <div class="d-flex d-lg-none align-items-center phone-number position-absolute start-50 translate-middle-x text-white">
-            <i class="flaticon-phone-call me-2"></i>
-            <h5 class="mb-0"><a class="text-white" href="tel:{{ site_settings.phone_number }}">{{ site_settings.phone_number }}</a></h5>
-        </div>
-        <!-- Button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
-        </button>
-        <!-- Menu -->
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="/cars">Cars</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/brands" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Top Brands <i class="ti-angle-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="/brands" class="dropdown-item">
-                                <span>All Car brands</span>
-                            </a>
-                        </li>
-                        {% for car_brand in car_brands %}
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <a class="logo" href="/"> <img src="{{ site_settings.header_logo.url }}" class="logo-img" alt=""> </a>
+            </div>
+            <!-- Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span> </button>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="/cars">Cars</a></li>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="/brands" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Top Brands <i class="ti-angle-down"></i></a>
+                        <ul class="dropdown-menu">
                             <li>
-                                <a href="{% url 'brand_cars_page' pk=car_brand.id %}" class="dropdown-item">
-                                    <span>{{ car_brand.title }}</span>
+                                <a href="/brands" class="dropdown-item">
+                                    <span>All Car brands</span>
                                 </a>
                             </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-            </ul>
-            <!-- Phone Number (Visible only inside the menu on mobile) -->
-            <div class="d-flex d-lg-none align-items-center phone-number mt-3">
-                <i class="flaticon-phone-call me-2"></i>
-                <h5 class="mb-0"><a href="tel:{{ site_settings.phone_number }}">{{ site_settings.phone_number }}</a></h5>
+                            {% for car_brand in car_brands %}
+                                <li>
+                                    <a href="{% url 'brand_cars_page' pk=car_brand.id %}" class="dropdown-item">
+                                        <span>{{ car_brand.title }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                </ul>
+                <div class="navbar-right">
+                    <div class="wrap">
+                        <div class="icon"> <i class="flaticon-phone-call"></i> </div>
+                        <div class="text">
+                            <p>Need help?</p>
+                            <h5><a href="tel:{{ site_settings.phone_number }}">{{ site_settings.phone_number }}</a></h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
 
     {% block content %}
     {% endblock content %}
