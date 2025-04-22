@@ -2,16 +2,14 @@ import requests
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
-
 from django.views.decorators.csrf import csrf_exempt
-
 
 from .models import About, PromoVideo, ClientFeedback, Booking, ContactPage, Message, HomeLuxuryCars
 from car_app.models import Car, CarType, CarBrand
 from news_app.models import News
 
-TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
-TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID'
+# Telegram bot
+from settings_app.models import TelegramBotConfig
 
 def home_page(request):
     about = About.objects.last()
@@ -150,6 +148,31 @@ def send_telegram_message(message):
     }
     requests.post(url, data=payload)
 
+def send_telegram_message(name, email, phone_number, subject, message_content):
+    bot_config = TelegramBotConfig.objects.last()
+    if not bot_config:
+        return False  # Konfiguratsiya mavjud emas
+
+    # Adminlar vergul bilan ajratilgan bo'lishi kerak (chat ID lar)
+    admin_ids = bot_config.admins.split(',')
+
+    message = (
+        f"📩 Yangi Xabar:\n\n"
+        f"👤 Ism: {name}\n"
+        f"📧 Email: {email}\n"
+        f"📞 Telefon: {phone_number}\n"
+        f"📝 Mavzu: {subject}\n\n"
+        f"✉️ Xabar:\n{message_content}"
+    )
+
+    for chat_id in admin_ids:
+        chat_id = chat_id.strip()
+        url = f"https://api.telegram.org/bot{bot_config.token}/sendMessage"
+        data = {"chat_id": chat_id, "text": message}
+        requests.post(url, data=data)
+
+    return True
+
 def contact_page(request):
     contact_data = ContactPage.objects.last()
     success_message = None
@@ -171,13 +194,13 @@ def contact_page(request):
             message=message_content,
         )
 
-        # Telegramga xabar yuborish
-        telegram_message = f"📩 Yangi Xabar:\n\n👤 Ism: {name}\n📧 Email: {email}\n📞 Telefon: {phone_number}\n📝 Mavzu: {subject}\n\n✉️ Xabar:\n{message_content}"
-        telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-        requests.post(telegram_url, data={"chat_id": TELEGRAM_CHAT_ID, "text": telegram_message})
+        # Telegram send message
+        success = send_telegram_message(name, email, phone_number, subject, message_content)
 
-        # Muvaffaqiyat xabarini qaytarish
-        success_message = "Your message was sent successfully."
+        if success:
+            success_message = "Xabaringiz muvaffaqiyatli yuborildi."
+        else:
+            success_message = "Xatolik: Telegram konfiguratsiyasi topilmadi."
 
     ctx = {
         "contact_data": contact_data,
